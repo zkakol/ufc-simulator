@@ -1,2 +1,3 @@
 # ufc-simulator
-1. Initial Commit
+
+This project is designed to simulate the UFC and all of its fighters
