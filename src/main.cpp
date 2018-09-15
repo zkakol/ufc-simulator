@@ -5,10 +5,13 @@
 */
 
 #include <iostream>
+#include "../include/Logger.h"
 
 using namespace std;
 
 int main(){
-    cout << "Welcome to the UFC";
+    include::Logger logger;
+    logger.notice("This is a test message");
+    logger.error("This is an error message");
     return 0;
 }
