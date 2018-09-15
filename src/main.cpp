@@ -6,12 +6,13 @@
 
 #include <iostream>
 #include "../include/Logger.h"
+#include "model/Roster.h"
 
 using namespace std;
 
 int main(){
     include::Logger logger;
-    logger.notice("This is a test message");
-    logger.error("This is an error message");
+    model::Roster r;
+    r.initializeRoster();
     return 0;
 }
