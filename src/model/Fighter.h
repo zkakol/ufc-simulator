@@ -7,25 +7,32 @@
 #ifndef UFC_SIMULATOR_FIGHTER_H
 #define UFC_SIMULATOR_FIGHTER_H
 
+#include <string>
+#include <map>
+
+
 namespace model{
     class Fighter{
     private:
         std::string name;
         int age;
-        std::nickname nickname;
-        int weightClass;
+        std::string nickname;
+        std::string weightClass;
 
         double striking;
         double grappling;
         double stamina;
         double health;
         double overall;
+
+        int wins;
+        int loses;
     public:
-        Fighter(std::string name, int age, std::nickname, int weightclass){
+        Fighter(std::string name, std::string weightclass){
             this->name = name;
-            this->age = age;
-            this->nickname = nickname;
             this->weightClass = weightclass;
+            this->wins = 0;
+            this->loses = 0;
         }
 
         void setFighterStats(double s, double grapple, double stamina, double h, double o){
@@ -36,13 +43,13 @@ namespace model{
             this->overall = o;
         }
 
-        inline static std::string getName(){return this->name;}
-        inline static int getAge(){return this->age;}
-        inline static std::string getNickname(){return this->nickname;}
-        inline static int getWeightClass(){return this->weightClass;}
+        inline std::string getName(){return this->name;}
+        inline int getAge(){return this->age;}
+        inline std::string getNickname(){return this->nickname;}
+        inline std::string getWeightClass(){return this->weightClass;}
 
-        inline static map<std::string,double> getStatus(){
-            return map<std::string, double> stats{
+        inline std::map<std::string,double> getStats(){
+            return std::map<std::string, double> {
                     {"striking" , this->striking},
                     {"grappling", this->grappling},
                     {"stamina", this->stamina},
@@ -50,6 +57,8 @@ namespace model{
                     {"overall", this->health}
             };
         }
+
+        
 
     };
 }

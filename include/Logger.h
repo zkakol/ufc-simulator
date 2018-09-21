@@ -11,6 +11,15 @@
 #include <fstream>
 #include <chrono>
 #include <ctime>
+#include <cstring>
+
+#ifdef __unix__
+const std::string SYSTEM_LOG = "../log/system.log";
+const std::string ERROR_LOG = "../log/error.log";
+#elif defined(_WIN32) || defined(WIN_32)
+const std::string SYSTEM_LOG = "C:\\Users\\Zack\\ClionProjects\\ufc-simulator\\log\\system.log";
+const std::string ERROR_LOG = "C:\\Users\\Zack\\ClionProjects\\ufc-simulator\\log\\error.log";
+#endif
 
 namespace include{
     class Logger{
@@ -19,8 +28,8 @@ namespace include{
         std::string errorLog;
     public:
         explicit Logger(){
-            this->systemLog = "../log/system.log";
-            this->errorLog = "../log/error.log";
+            this->systemLog = SYSTEM_LOG;
+            this->errorLog = ERROR_LOG;
         }
 
         void notice(const std::string &message){
