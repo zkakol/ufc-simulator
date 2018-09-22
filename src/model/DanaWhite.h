@@ -9,13 +9,15 @@
 
 #include <iostream>
 #include "Fighter.h"
+#include "FightAbstract.h"
 
 namespace model{
-    class DanaWhite{
+    class DanaWhite : public FightAbstract{
     public:
         void sayHeWasNeverMyFriend(Fighter *fighter){
-            std::cout << fighter->getName() << " was never my friend!";
+            std::cout << "\"" << fighter->getName() << " was never my friend!\" -- Dana White" ;
         }
+
     };
 }
 

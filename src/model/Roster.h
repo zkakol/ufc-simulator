@@ -40,6 +40,19 @@ const int OVERALL = 5;
 namespace model{
     class Roster{
     private:
+        std::vector<Fighter*> allFighters;
+
+        std::vector<Fighter*> flyweight;
+        std::vector<Fighter*> bantamweight;
+        std::vector<Fighter*> featherweight;
+        std::vector<Fighter*> lightweight;
+        std::vector<Fighter*> welterweight;
+        std::vector<Fighter*> middleweight;
+        std::vector<Fighter*> lightHeavyweight;
+        std::vector<Fighter*> heavyweight;
+
+        std::vector<Fighter*> wstrawweight;
+        std::vector<Fighter*> wbantamweight;
 
     public:
         void initializeRoster(){
@@ -73,9 +86,26 @@ namespace model{
                             atof(attributes[HEALTH].c_str()),
                             atof(attributes[OVERALL].c_str())
                     );
-                    logger.notice(f->getName() + " " + f->getWeightClass());
+                    this->allFighters.push_back(f);
+                    if(weightClass == "125") this->flyweight.push_back(f);
+                    if(weightClass == "135") this->bantamweight.push_back(f);
+                    if(weightClass == "145") this->featherweight.push_back(f);
+                    if(weightClass == "155") this->lightweight.push_back(f);
+                    if(weightClass == "170") this->welterweight.push_back(f);
+                    if(weightClass == "185") this->middleweight.push_back(f);
+                    if(weightClass == "205") this->lightHeavyweight.push_back(f);
+                    if(weightClass == "265") this->heavyweight.push_back(f);
+                    if(weightClass == "115w") this->wstrawweight.push_back(f);
+                    if(weightClass == "135w") this->wbantamweight.push_back(f);
                 }
             }
+        }
+
+        Fighter* getRandomFighter(){
+            srand(time(0));
+            int randomIndex = rand() % allFighters.size();
+            //int randomIndex = (int)(((((double)std::rand()) / RAND_MAX) * allFighters.size()) + 1);
+            return allFighters[randomIndex];
         }
     };
 }
